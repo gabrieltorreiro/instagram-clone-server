@@ -4,17 +4,21 @@
   "description": "Instagram Clone Server",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint-staged": "lint-staged",
+    "typescript": "tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-  },
   "devDependencies": {
     "@commitlint/cli": "^18.4.1",
     "@commitlint/config-conventional": "^18.4.0",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
+    "eslint": "^8.53.0",
+    "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
-    "husky": "^8.0.3"
+    "prettier": "3.1.0",
+    "typescript": "^5.2.2"
   }
 }
