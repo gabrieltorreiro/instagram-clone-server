@@ -1,7 +1,7 @@
 {
   "**/*.{js,jsx,mjs,ts,tsx,mts}": [
     "prettier --write .",
-    "eslint --max-warnings=0 --fix .",
+    "npm run lint",
     "git add ."
   ]
 }

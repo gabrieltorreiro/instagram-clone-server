@@ -7,7 +7,8 @@ module.exports = {
   plugins: ["@typescript-eslint"],
   root: true,
   rules: {
-    "no-undef": "error",
+    "no-undef": "off",
     "no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "off",
   },
 };

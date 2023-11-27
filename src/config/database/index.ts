@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
 
-export const sequelize = new Sequelize("sqlite::memory:", {
-  logging: console.log,
+export const sequelize = new Sequelize("sqlite:///:memory:", {
+  logging: false,
 });
