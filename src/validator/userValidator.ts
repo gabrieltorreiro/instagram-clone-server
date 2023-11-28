@@ -1,22 +1,34 @@
-import { NextFunction, Request, Response } from "express";
-import validator from "validator";
-import { MissingParams } from "../errors";
+import { checkSchema } from "express-validator";
 
-export const userValidator = (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
-  try {
-    const { username } = req.body;
-    console.log(username, !username);
-    if (!username || !validator.isAlphanumeric(username)) {
-      throw MissingParams("Missing or Wrong Username field");
-    }
-    next();
-  } catch (error: any) {
-    const statusCode = error?.statusCode || 500;
-    const msg = { msg: error.msg } || error;
-    res.status(statusCode).json(msg);
-  }
+export const userValidator = {
+  show: checkSchema({
+    id: {
+      in: ["params"],
+      isUUID: {
+        errorMessage: "O id deve ser um uuid válido",
+      },
+    },
+  }),
+  create: checkSchema(
+    {
+      email: {
+        isEmail: {
+          errorMessage: "O email deve ser válido",
+        },
+      },
+      username: {
+        isLength: {
+          errorMessage: "O username deve ter entre 3 e 20 caracteres",
+          options: { min: 3, max: 20 },
+        },
+      },
+      password: {
+        isStrongPassword: {
+          errorMessage:
+            "A senha deve ser forte, contendo pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula, um número e um símbolo",
+        },
+      },
+    },
+    ["body"],
+  ),
 };
